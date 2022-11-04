@@ -5,9 +5,6 @@ import log from 'debug';
 import config from '@tomorrow/config';
 import { version } from '../package.json';
 import commands from './commands';
-import { readConfigFile } from 'toolbelt';
-
-config.setConfig(readConfigFile())
 
 const debug = log.get('cli');
 log.setLevel(config.get('core.debug') as boolean);
@@ -15,8 +12,8 @@ log.setLevel(config.get('core.debug') as boolean);
 const program = new Commander();
 
 program
-    .name('BUILD-ENV')
-    .description('Local package helper')
+    .name('Tomorrow.JS')
+    .description('The next generation React Native environment')
     .version(version);
 
 debug('initialized');

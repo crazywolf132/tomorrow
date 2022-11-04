@@ -11,8 +11,15 @@ interface Settings extends Options {
 
 const { target, testRange, format } = settings;
 
-const cloneToTestRange = (pkgName, fileName: string): void => {
-    fs.copyFileSync(path.join(process.cwd(), 'dist', fileName), path.resolve(testRange, 'node_modules', pkgName, 'dist', fileName))
+const replaceExtension = (fileName: string, _format: string): string => {
+    const parts = fileName.split('.');
+    parts.pop();
+    parts.push(_format === "cjs" ? "js" : _format === "esm" ? "mjs" : _format);
+    return parts.join(".");
+}
+
+const cloneToTestRange = (pkgName: string, fileName: string, format: string): void => {
+    fs.copyFileSync(path.join(process.cwd(), 'dist', replaceExtension(fileName, format)), path.resolve(testRange, 'node_modules', pkgName, 'dist', replaceExtension(fileName, format)))
 }
 
 export const tsupBuilder = (settings: Settings): Options => {
@@ -49,10 +56,10 @@ export const tsupBuilder = (settings: Settings): Options => {
         // @ts-ignore // This is a typing issue.
         config.onSuccess = () => {
             // We are going to clone the file to the test range.
-            ((settings.entry ?? []) as string[]).forEach((entry: string) => {
+            ((settings.entry ?? []) as string[]).forEach((entry: string, idx: number) => {
                 // We will get the last part of the string, after the last slash.
                 const fileName = entry.split('/').pop();
-                cloneToTestRange(name, fileName!);
+                cloneToTestRange(name, fileName!, Array.isArray(settings.format) ? settings.format[idx] : settings.format);
             });
         }
     }
