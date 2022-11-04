@@ -2,6 +2,8 @@ import { KeyPressHandler } from "./keyPressHandler";
 import { Screen } from './screen';
 import { Registry } from "./registry";
 import { CTRL_C, CTRL_D, CTRL_L } from "./consts";
+import Config from '@tomorrow/config';
+import { CTRL_C, CTRL_D, CTRL_L, LOGO } from "./consts";
 
 export default class UIEngine {
     private static currentMenu: number = 0; // This tells the system to load the first screen loaded.
@@ -47,6 +49,16 @@ export default class UIEngine {
     }
 
     public static display() {
+        // This is where we will load the logo.
+        // We will check to see if the config allows for it first.
+        if (Config.get('interface.showLogo') as boolean) {
+            if (Config.get('interface.customLogo') as boolean) {
+                // We will load the custom logo.
+                console.log(Config.get('interface.logo') as string);
+            } else {
+                // We will just render our logo
+                console.log(LOGO)
+            }
         this.screenStack[this.currentMenu].render();
     }
 

@@ -7,7 +7,9 @@
         "dev": "tsup --watch",
         "build": "tsup"
     },
-    "dependencies": {},
+    "dependencies": {
+        "chalk": "latest"
+    },
     "devDependencies": {
         "@tomorrow/config": "workspace:*",
         "toolbelt": "workspace:*",
