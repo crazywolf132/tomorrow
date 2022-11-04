@@ -1,0 +1,10 @@
+{
+    "include": [
+        "./src"
+    ],
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "moduleResolution": "Node"
+    }
+}
