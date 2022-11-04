@@ -11,6 +11,7 @@
     "devDependencies": {
         "debug": "workspace:*",
         "build-env": "workspace:*",
+        "toolbelt": "workspace:*",
         "typebook": "workspace:*",
         "typescript": "latest",
         "tsup": "latest",
