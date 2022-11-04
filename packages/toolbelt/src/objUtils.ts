@@ -1,3 +1,5 @@
+import deepMerge from 'deepmerge'
+
 export const at = (obj: object, location: string) => {
     // We are going to keep a record of where we are, and dive the object.
     let currentLocation = obj;
@@ -13,3 +15,13 @@ export const at = (obj: object, location: string) => {
     }
     return currentLocation;
 }
+
+export const listContainsByKey = <T>(list: T[], key: keyof T, value: any): boolean => {
+    return list.some((item: T) => item[key] === value);
+}
+
+export const listContainsByManyKeys = <T>(list: T[], key: (keyof T)[], value: any[]): boolean => {
+    return key.some((k: keyof T, idx: number) => listContainsByKey(list, k, value[idx]));
+}
+
+export const merge = (...objs: object[]): object => deepMerge.all(objs);

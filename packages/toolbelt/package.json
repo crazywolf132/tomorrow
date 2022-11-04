@@ -5,19 +5,25 @@
     "types": "./dist/index.d.ts",
     "scripts": {
         "dev": "tsup --watch",
-        "build": "tsup"
+        "build": "tsup",
+        "test": "jest --coverage",
+        "test:watch": "jest --watch"
     },
     "devDependencies": {
         "@types/fs-extra": "^9.0.13",
+        "@types/jest": "latest",
         "@types/node": "^18.11.9",
         "build-env": "workspace:*",
         "debug": "workspace:*",
+        "jest": "latest",
+        "ts-jest": "latest",
         "tsup": "latest",
         "typebook": "workspace:*",
         "typescript": "latest",
         "vitest": "latest"
     },
     "dependencies": {
+        "deepmerge": "^4.2.2",
         "fs-extra": "^10.1.0"
     }
 }
