@@ -5,8 +5,12 @@ import log from 'debug';
 import config from '@tomorrow/config';
 import { version } from '../package.json';
 import commands from './commands';
+import { readConfigFile } from 'toolbelt';
+
+config.setConfig(readConfigFile())
 
 const debug = log.get('cli');
+log.setLevel(config.get('core.debug') as boolean);
 
 const program = new Commander();
 

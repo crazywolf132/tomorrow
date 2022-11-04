@@ -1,4 +1,4 @@
-![Tomorrow.JS](./.github/TomorrowjsLogo.svg)
+![Tomorrow.JS](./.github/tomorrowJS.svg)
 
 <p align="center">The next generation react-native ecosystem</p>
 
