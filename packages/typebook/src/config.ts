@@ -3,10 +3,10 @@ export interface Config {
     core: {
         allowPlugins?: boolean;
         pluginsFolder?: string;
-        
+
         // Whether or not to use a polling event system for config changes, or use a static config system.
         useEventSystem?: boolean;
-        
+
         // Whether or not to allow for the system to print debug information
         debug?: boolean;
 
@@ -50,6 +50,7 @@ export interface Config {
     };
 
     interface: {
+        logo?: string;
         customLogo?: boolean;
         showLogo?: boolean;
         showPort?: boolean;
