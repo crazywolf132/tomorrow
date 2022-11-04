@@ -1,5 +1,5 @@
 {
-    "name": "@tomorrow/config",
+    "name": "ui-engine",
     "version": "0.0.1",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
@@ -9,13 +9,15 @@
     },
     "dependencies": {},
     "devDependencies": {
+        "@tomorrow/config": "workspace:*",
+        "toolbelt": "workspace:*",
         "debug": "workspace:*",
         "build-env": "workspace:*",
-        "toolbelt": "workspace:*",
         "typebook": "workspace:*",
         "typescript": "latest",
         "tsup": "latest",
-        "vitest": "latest"
+        "vitest": "latest",
+        "@types/node": "latest"
     },
     "peerDependencies": {}
 }

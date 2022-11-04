@@ -6,6 +6,7 @@ type LogReturn = (...parts: unknown[]) => any;
 
 export class LogBackend {
     private prevTime: number;
+    private enabled: boolean = true;
     constructor(private name: string, private color: string) { };
 
     private getTimeDifference(): number {
@@ -38,7 +39,12 @@ export class LogBackend {
 
     protected log(...parts: unknown[]): any {
         const [prefix, ...rest] = this.getPrefix(...parts);
-        console.log(prefix, ...rest, `${chalk.hex(this.color)(this.clean(this.getTimeDifference()))}`);
+        if (this.enabled)
+            console.log(prefix, ...rest, `${chalk.hex(this.color)(this.clean(this.getTimeDifference()))}`);
+    }
+
+    public updateStatus(enabled: boolean): void {
+        this.enabled = enabled;
     }
 
     public getLogger(): LogReturn {
@@ -47,19 +53,18 @@ export class LogBackend {
 }
 
 export default class Log {
-    private static registered: Dictionary<LogReturn> = {};
+    private static registered: Dictionary<LogBackend> = {};
     private static usedColors: string[] = [];
     private static enabled: boolean = false;
 
-    private static getByName(name: string) {
+    private static getByName(name: string): LogReturn {
         if (!(name in this.registered)) {
             // There is no logger by this name, so we will register it
             const newColor = this.getRandomColor();
             this.usedColors.push(newColor);
-            const lb = new LogBackend(name, newColor);
-            this.registered[name] = lb.getLogger();
+            this.registered[name] = new LogBackend(name, newColor);
         }
-        return this.registered[name];
+        return this.registered[name].getLogger();
     }
 
     public static getRandomColor(): string {
@@ -78,9 +83,22 @@ export default class Log {
 
     static setLevel(enabled: boolean = true) {
         this.enabled = enabled;
+
+        // We are now going to go through every registered logger and update their status.
+        for (const name in this.registered) {
+            this.registered[name].updateStatus(enabled);
+        }
     }
 
     static getLevel(): boolean {
         return this.enabled
+    }
+
+    static getDebuggers(): Dictionary<LogBackend> {
+        return this.registered
+    }
+
+    static getUsedColors(): string[] {
+        return this.usedColors;
     }
 }

@@ -5,11 +5,16 @@
     "types": "./dist/index.d.ts",
     "scripts": {
         "dev": "tsup --watch",
-        "build": "tsup"
+        "build": "tsup",
+        "test": "jest --coverage",
+        "test:watch": "jest --watch"
     },
     "devDependencies": {
+        "@types/jest": "^29.2.1",
         "@types/ms": "^0.7.31",
         "build-env": "workspace:*",
+        "jest": "^29.2.2",
+        "ts-jest": "^29.0.3",
         "tsup": "latest",
         "typebook": "workspace:*",
         "typescript": "latest",
