@@ -1,8 +1,5 @@
-<p align="center">
-
 ![Tomorrow.JS](./.github/TomorrowjsLogo.svg)
 
-</p>
 <p align="center">The next generation react-native ecosystem</p>
 
 ## Quick Start
