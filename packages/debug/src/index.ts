@@ -93,4 +93,12 @@ export default class Log {
     static getLevel(): boolean {
         return this.enabled
     }
+
+    static getDebuggers(): Dictionary<LogBackend> {
+        return this.registered
+    }
+
+    static getUsedColors(): string[] {
+        return this.usedColors;
+    }
 }
