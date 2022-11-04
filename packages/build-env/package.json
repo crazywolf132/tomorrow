@@ -1,0 +1,31 @@
+{
+    "name": "build-env",
+    "version": "0.0.1",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "bin": {
+        "builder": "./dist/cli.js"
+    },
+    "scripts": {
+        "dev": "tsup --watch",
+        "build": "tsup"
+    },
+    "dependencies": {
+        "commander": "^9.4.1",
+        "inquirer": "8.0.0"
+    },
+    "devDependencies": {
+        "@types/commander": "^2.12.2",
+        "@types/fs-extra": "^9.0.13",
+        "@types/node": "^18.11.9",
+        "fs-extra": "^10.1.0",
+        "tsup": "^6.4.0",
+        "typescript": "^4.8.4",
+        "vitest": "^0.24.5"
+    },
+    "settings": {
+        "testRange": "../../../testRange/tomorrow/",
+        "target": "es2015",
+        "format": "cjs"
+    }
+}

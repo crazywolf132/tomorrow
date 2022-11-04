@@ -1,0 +1,22 @@
+{
+    "name": "debug",
+    "version": "0.0.1",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+        "dev": "tsup --watch",
+        "build": "tsup"
+    },
+    "devDependencies": {
+        "@types/ms": "^0.7.31",
+        "build-env": "workspace:*",
+        "tsup": "latest",
+        "typebook": "workspace:*",
+        "typescript": "latest",
+        "vitest": "latest"
+    },
+    "dependencies": {
+        "chalk": "4.0.0",
+        "ms": "^2.1.3"
+    }
+}

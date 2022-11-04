@@ -1,0 +1,23 @@
+{
+    "name": "toolbelt",
+    "version": "0.0.1",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+        "dev": "tsup --watch",
+        "build": "tsup"
+    },
+    "devDependencies": {
+        "@types/fs-extra": "^9.0.13",
+        "@types/node": "^18.11.9",
+        "build-env": "workspace:*",
+        "debug": "workspace:*",
+        "tsup": "latest",
+        "typebook": "workspace:*",
+        "typescript": "latest",
+        "vitest": "latest"
+    },
+    "dependencies": {
+        "fs-extra": "^10.1.0"
+    }
+}

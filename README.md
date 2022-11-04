@@ -1,5 +1,5 @@
 ![Tomorrow.JS](./.github/TomorrowjsLogo.svg)
-<center>The next generation react-native ecosystem</center>
+<p align="center">The next generation react-native ecosystem</p>
 
 ## Quick Start
 ```bash

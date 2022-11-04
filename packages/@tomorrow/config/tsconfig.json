@@ -1,0 +1,9 @@
+{
+    "include": ["./src"],
+    "compilerOptions": {
+        "target": "ES2016",
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "moduleResolution": "Node"
+    }
+}

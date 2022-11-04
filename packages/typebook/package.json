@@ -1,0 +1,16 @@
+{
+    "name": "typebook",
+    "version": "0.0.1",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+        "build": "tsup",
+        "dev": "tsup --watch"
+    },
+    "devDependencies": {
+        "build-env": "workspace:*",
+        "typescript": "latest",
+        "tsup": "latest",
+        "vitest": "latest"
+    }
+}

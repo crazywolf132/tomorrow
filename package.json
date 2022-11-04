@@ -10,10 +10,11 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "gen": "builder new && pnpm install"
   },
   "devDependencies": {
-    "eslint-config-custom": "workspace:*",
+    "build-env": "workspace:*",
     "prettier": "latest",
     "turbo": "latest"
   },

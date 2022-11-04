@@ -1,0 +1,25 @@
+{
+    "name": "@tomorrow/cli",
+    "version": "0.0.1",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+        "dev": "tsup --watch",
+        "build": "tsup"
+    },
+    "devDependencies": {
+        "@types/node": "latest",
+        "@types/commander": "^2.12.2",
+        "@tomorrow/config": "workspace:*",
+        "toolbelt": "workspace:*",
+        "debug": "workspace:*",
+        "build-env": "workspace:*",
+        "tsup": "latest",
+        "typebook": "workspace:*",
+        "typescript": "latest",
+        "vitest": "latest"
+    },
+    "dependencies": {
+        "commander": "^9.4.1"
+    }
+}
