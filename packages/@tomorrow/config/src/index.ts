@@ -1,8 +1,9 @@
 import type { Config as IConfig } from 'typebook';
 import { at, readConfigFile } from 'toolbelt';
+import defaultConfig from './defaults';
 
 export default class Config {
-    private static config: Partial<IConfig> = readConfigFile();
+    private static config: Partial<IConfig> = readConfigFile(defaultConfig);
 
     public static setConfig(config: IConfig) {
         this.config = config;
