@@ -9,8 +9,6 @@
     },
     "dependencies": {},
     "devDependencies": {
-        "@tomorrow/config": "workspace:*",
-        "toolbelt": "workspace:*",
         "debug": "workspace:*",
         "build-env": "workspace:*",
         "typebook": "workspace:*",
