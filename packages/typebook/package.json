@@ -8,9 +8,11 @@
         "dev": "tsup --watch"
     },
     "devDependencies": {
+        "@types/metro": "^0.66.1",
         "build-env": "workspace:*",
-        "typescript": "latest",
+        "metro": "^0.73.3",
         "tsup": "latest",
+        "typescript": "latest",
         "vitest": "latest"
     }
 }

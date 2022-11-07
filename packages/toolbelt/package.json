@@ -10,12 +10,14 @@
         "test:watch": "jest --watch"
     },
     "devDependencies": {
+        "@tomorrow/errors": "workspace:*",
         "@types/fs-extra": "^9.0.13",
         "@types/jest": "latest",
         "@types/node": "^18.11.9",
         "build-env": "workspace:*",
         "debug": "workspace:*",
         "jest": "latest",
+        "resolve-from": "^5.0.0",
         "ts-jest": "latest",
         "tsup": "latest",
         "typebook": "workspace:*",
@@ -23,7 +25,13 @@
         "vitest": "latest"
     },
     "dependencies": {
+        "@react-native-community/cli-server-api": "^9.2.1",
         "deepmerge": "^4.2.2",
-        "fs-extra": "^10.1.0"
+        "find-yarn-workspace-root": "^2.0.0",
+        "fs-extra": "^10.1.0",
+        "glob": "^8.0.3",
+        "metro": "^0.73.3",
+        "metro-config": "^0.73.3",
+        "metro-source-map": "^0.73.3"
     }
 }

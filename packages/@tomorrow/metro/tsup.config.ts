@@ -6,5 +6,5 @@ export default defineConfig([tsupBuilder({
     entry: ['src/index.ts'],
     reactNative: false,
     cloneFile: false,
-    external: ["@tomorrow/metro"]
+    external: ['@tomorrow/metro'] // this is thanks to the import
 })])

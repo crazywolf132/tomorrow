@@ -1,0 +1,38 @@
+{
+    "name": "@tomorrow/metro",
+    "version": "0.0.1",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+        "dev": "tsup --watch",
+        "build": "tsup"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.19.3",
+        "@babel/core": "^7.12.9",
+        "@babel/parser": "^7.20.2",
+        "@tomorrow/config": "workspace:*",
+        "@types/fs-extra": "^9.0.13",
+        "@types/glob": "^8.0.0",
+        "@types/metro-babel-transformer": "^0.66.0",
+        "@types/metro-config": "^0.66.0",
+        "@types/metro-source-map": "^0.66.0",
+        "@types/node": "latest",
+        "build-env": "workspace:*",
+        "debug": "workspace:*",
+        "metro": "^0.73.3",
+        "metro-babel-transformer": "^0.73.3",
+        "metro-config": "^0.73.3",
+        "resolve-from": "^5.0.0",
+        "toolbelt": "workspace:*",
+        "tsup": "latest",
+        "typebook": "workspace:*",
+        "typescript": "latest",
+        "vitest": "latest"
+    },
+    "dependencies": {
+        "fs-extra": "^10.1.0",
+        "glob": "^8.0.3",
+        "sucrase": "^3.28.0"
+    }
+}

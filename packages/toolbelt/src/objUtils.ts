@@ -25,3 +25,16 @@ export const listContainsByManyKeys = <T>(list: T[], key: (keyof T)[], value: an
 }
 
 export const merge = (...objs: object[]): object => deepMerge.all(objs);
+
+export const uniqueItems = <T = string[]>(items: T[]): T[] => {
+    return [...new Set<T>(items)];
+}
+
+export const isURL = (potentialUrl: string): boolean => {
+    try {
+        new URL(potentialUrl);
+        return true
+    } catch {
+        return false;
+    }
+}

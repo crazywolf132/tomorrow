@@ -46,7 +46,10 @@ export interface Config {
         babelRC?: string;
         metroRC?: string;
         // Used to set if we want to allow sucrase to be involved
-        onlyBabel?: string;
+        onlyBabel?: boolean;
+
+        // Used by metro if you want a specific hermes engine.
+        hermesDir?: string;
     };
 
     interface: {
