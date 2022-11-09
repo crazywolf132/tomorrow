@@ -18,7 +18,7 @@ npm install tomorrowjs
 
 ## Our Aim
 
-We aim to create an environment where people from any react background can easily create a react-native application. We want to bring the idea of modular react-native applications to the next level.
+We aim to create an environment where people from any react background can easily create a react-native application. We want to bring the idea of modular react-native applications to the next level whilst keeping it as simple as playing with lego.
 
 ## Why Tomorrow.JS?
 
