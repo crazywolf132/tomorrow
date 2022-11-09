@@ -41,7 +41,7 @@ export const tsupBuilder = (settings: Settings): Options => {
         settings.name = name;
     }
 
-    if (!settings.dts) {
+    if (settings.dts == null) {
         settings.dts = true;
     }
 
