@@ -2,7 +2,7 @@ import { KeyPressHandler } from "./keyPressHandler";
 import { Screen } from './screen';
 import { Registry } from "./registry";
 import Config from '@tomorrow/config';
-import { CTRL_C, CTRL_D, CTRL_L, LOGO } from "./consts";
+import { CTRL_C, CTRL_D, CTRL_L, LOGO, ESC, clear } from "./consts";
 import Log from 'debug';
 
 const debug = Log.get('ui-engine');
@@ -44,6 +44,7 @@ export default class UIEngine {
         // We are also going to attach the key handler
         UIEngine.keyHandler = this.screenStack[this.currentMenu].handleKeys;
     }
+
     public static start() {
         // Doing a quick check that we even have a screen...
         debug('starting...');
@@ -69,6 +70,7 @@ export default class UIEngine {
     }
 
     public static display() {
+        clear();
         // This is where we will load the logo.
         // We will check to see if the config allows for it first.
         if (Config.get('interface.showLogo') as boolean) {
@@ -107,4 +109,4 @@ export default class UIEngine {
     }
 }
 
-export { Screen, CTRL_C, CTRL_D, CTRL_L };
+export { Screen, CTRL_C, CTRL_D, CTRL_L, ESC, clear };
