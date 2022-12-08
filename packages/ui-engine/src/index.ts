@@ -27,14 +27,23 @@ export default class UIEngine {
         this.screenStack.unshift(screen);
     }
 
-    public static changeScreen(screenPosition: number) {
+    public static changeScreen(screenPosition: number | string) {
+        if (typeof screenPosition === "string") {
+            // We will loop through the screen stack and find the screen that matches the name.
+            let foundScreen = this.screenStack.findIndex((screen) => screen.screenName === screenPosition);
+            if (foundScreen === -1) {
+                // We will throw an error as we could not find the screen.
+                throw new Error(`Could not find screen with name: ${screenPosition}`);
+            }
+            // We will now set the screen position to the index of the screen.
+            screenPosition = foundScreen
+        }
         this.currentMenu = screenPosition;
         // We are going to ask the new screen to render
         this.display();
         // We are also going to attach the key handler
         UIEngine.keyHandler = this.screenStack[this.currentMenu].handleKeys;
     }
-
     public static start() {
         // Doing a quick check that we even have a screen...
         debug('starting...');
