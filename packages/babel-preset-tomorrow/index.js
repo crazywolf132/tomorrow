@@ -88,7 +88,7 @@ function getAliasPlugin() {
             }
         ]
     }
-    return null;
+    return [];
 }
 
 function getObjectRestSpreadPlugin() {
