@@ -33,7 +33,7 @@ export const regularBabel = (args: BabelTransformerArgs) => {
         ast: true
     };
 
-    const { parseSync, transformFromAstSync } = getBabelParserFromProject(options.projectRoot);
+    const { parseSync, transformFromAstSync } = getBabelCoreFromProject(options.projectRoot);
     const sourceAst = parseSync(src, babelConfig);
 
     // Very rarely, the source code is not valid JavaScript. In that case, we just return an empty ast
@@ -113,9 +113,6 @@ export const loaders: Record<string, (args: BabelTransformerArgs) => any> = {
     },
 
     reactNativeModule(args) {
-        if (args.filename.includes("EventPollyFill.js")) { // There is a problem with this files `flow` config. This should be moved to a matcher
-            return regularBabel(args);
-        }
         return sucrase(args, { transforms: ['jsx', 'flow', 'imports'] })
     },
 

@@ -5,7 +5,7 @@ import { createMultiRuleTransformer, loaders } from "./multiRuleTransformer";
 const transform = createMultiRuleTransformer({
     getRuleType({ filename }) {
         // is a node module, and is not one of the impossible modules
-        return nodeModuleMatcher.test(filename) && !impossibleNodeModuleMatcher.test(filename) ? 'module' : 'app';
+        return nodeModuleMatcher.test(filename) && !(impossibleNodeModuleMatcher.test(filename) || filename.includes("EventPolyfill.js")) ? 'module' : 'app';
     },
     rules: [
         {
@@ -19,13 +19,13 @@ const transform = createMultiRuleTransformer({
             name: 'react-native',
             type: 'module',
             test: reactNativeMatcher({ folders: nodeModulesPaths }),
-            transform: loaders.reactNative,
+            transform: loaders.reactNativeModule,
         },
         {
             name: 'tomorrow',
             type: 'module',
             test: tomorrowMatcher({ folders: nodeModulesPaths }),
-            transform: loaders.tomorrow,
+            transform: loaders.tomorrowModule,
         },
         {
             name: 'sucrase',
@@ -42,7 +42,7 @@ const transform = createMultiRuleTransformer({
         {
             name: 'babel',
             test: () => true,
-            transform: loaders.ap
+            transform: loaders.app
         }
     ]
 })

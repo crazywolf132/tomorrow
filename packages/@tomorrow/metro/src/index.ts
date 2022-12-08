@@ -38,7 +38,7 @@ export const getDefaultConfig = (projectRoot: string): MetroConfig.InputConfigT 
             getModulesRunBeforeMainModule: () => [
                 require.resolve(path.join(reactNativePath, 'Libraries/Core/InitializeCore'))
             ],
-            getPollyfills: () => require(path.join(reactNativePath, 'rn-get-polyfills'))(),
+            getPolyfills: () => require(path.join(reactNativePath, 'rn-get-polyfills'))(),
         },
         server: {
             port: Number(config.get('metro.port')) || Number(process.env.METRO_PORT) || 8081,
