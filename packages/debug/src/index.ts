@@ -6,8 +6,7 @@ type LogReturn = (...parts: unknown[]) => any;
 
 export class LogBackend {
     private prevTime: number;
-    private enabled: boolean = true;
-    constructor(private name: string, private color: string) { };
+    constructor(private name: string, private color: string, private enabled: boolean = true) { };
 
     private getTimeDifference(): number {
         const currentTime = Number(new Date());
@@ -62,7 +61,7 @@ export default class Log {
             // There is no logger by this name, so we will register it
             const newColor = this.getRandomColor();
             this.usedColors.push(newColor);
-            this.registered[name] = new LogBackend(name, newColor);
+            this.registered[name] = new LogBackend(name, newColor, Log.enabled);
         }
         return this.registered[name].getLogger();
     }
