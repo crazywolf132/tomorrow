@@ -72,7 +72,9 @@ module.exports = function (api, options = {}) {
             [require.resolve('@babel/plugin-proposal-decorators'), { legacy: true }],
             platform === 'web' && [require.resolve('babel-plugin-react-native-web')],
             isWebpack && platform !== 'web' && [require.resolve('./plugins/disable-ambiguous-requires')],
-        ]
+            "@babel/plugin-proposal-export-namespace-from",
+            require.resolve('./plugins/router')
+        ].filter(Boolean)
     }
 }
 
@@ -88,7 +90,7 @@ function getAliasPlugin() {
             }
         ]
     }
-    return [];
+    return [{}];
 }
 
 function getObjectRestSpreadPlugin() {
