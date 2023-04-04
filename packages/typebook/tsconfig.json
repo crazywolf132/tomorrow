@@ -1,0 +1,10 @@
+{
+    "include": ["./src"],
+    "exclude": ["**/__tests__", "**/__mocks__", "**/*.test.ts", "**/*.spec.ts"],
+    "compilerOptions": {
+        "target": "ES2016",
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "moduleResolution": "Node"
+    }
+}

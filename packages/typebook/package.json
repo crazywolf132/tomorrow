@@ -1,16 +1,19 @@
 {
     "name": "typebook",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "scripts": {
         "build": "tsup",
-        "dev": "tsup --watch"
+        "dev": "tsup --watch",
+        "localClone": "rm -rf ./*.tgz && pnpm build && pnpm pack && cp ./*.tgz /Users/brayden/Documents/testRange/tomorrow/pkgs"
     },
     "devDependencies": {
         "@types/metro": "^0.66.1",
+        "@types/react": "^18.0.26",
         "build-env": "workspace:*",
-        "metro": "^0.73.3",
+        "metro": "^0.75.1",
+        "react": "^18.2.0",
         "tsup": "latest",
         "typescript": "latest",
         "vitest": "latest"

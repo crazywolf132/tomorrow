@@ -24,6 +24,12 @@ export interface Config {
 
         // Whether or not to use the `src` folder instead.
         useSrc?: boolean;
+
+        // Whether or not to do module federation
+        federation?: boolean;
+
+        // Use hermes
+        useHermes?: boolean;
     }
 
     orchestrator: {
@@ -62,5 +68,6 @@ export interface Config {
         clearConsole?: boolean;
         showMacCommands?: boolean;
         allowWebsite?: boolean;
+        onlyInfoLogs?: boolean;
     }
 }
