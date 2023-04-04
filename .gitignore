@@ -32,3 +32,8 @@ yarn-error.log*
 
 # turbo
 .turbo
+
+# local build files
+*.tgz
+
+*.bundled*
