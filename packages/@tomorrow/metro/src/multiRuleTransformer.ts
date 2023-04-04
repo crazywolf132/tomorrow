@@ -1,10 +1,8 @@
-import Log from 'debug';
 import resolveFrom from 'resolve-from'
 // @ts-ignore -- We know it does actually have this.
 import type { BabelTransformer, BabelTransformerArgs } from 'metro-babel-transformer';
 import { getBabelConfig } from './getBabelConfig';
-
-const debug = Log.get('metro');
+import Config from '@tomorrow/config';
 
 let babelCore: typeof import('@babel/core') | undefined;
 let babelParser: typeof import('@babel/parser') | undefined;
@@ -73,7 +71,7 @@ export const parseAST = (projectRoot: string, sourceCode: string) => {
     });
 }
 
-export const createMultiRuleTransformer = ({ getRuleType, rules }: { getRuleType: (args: BabelTransformerArgs) => string; rules: Rule[]; }): BabelTransformer['transform'] => {
+export const createMultiRuleTransformer = ({ getRuleType, rules }: { getRuleType: (args: BabelTransformerArgs) => string; rules: any[]; }): BabelTransformer['transform'] => {
     return function transform(args: BabelTransformerArgs) {
         const { filename, options } = args;
         const OLD_BABEL_ENV = process.env.BABEL_ENV;
@@ -118,10 +116,11 @@ export const loaders: Record<string, (args: BabelTransformerArgs) => any> = {
 
     tomorrowModule(args) {
         let res = sucrase(args, {
-            transforms: ['imports']
+            transforms: ['jsx', 'imports', 'typescript']
         });
 
         // TODO: HERE WE SHOULD REPLACE ENV's
+        res.code = res.code.replaceAll('process.env.TOMORROW_APP_SLUG', Config.get('core.appSlug'));
 
         return res;
     },
