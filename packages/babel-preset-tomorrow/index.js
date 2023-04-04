@@ -1,5 +1,3 @@
-const config = require('@tomorrow/config');
-
 const lazyImportsBlackList = require('./lazy-imports-blacklist')
 
 let hasWarnedJsxRename = false;
