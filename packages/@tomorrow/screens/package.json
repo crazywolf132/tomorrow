@@ -1,0 +1,25 @@
+{
+    "name": "@tomorrow/screens",
+    "version": "0.0.1",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+        "dev": "tsup --watch",
+        "build": "tsup"
+    },
+    "dependencies": {
+        "ui-engine": "workspace:*"
+    },
+    "devDependencies": {
+        "@tomorrow/config": "workspace:*",
+        "toolbelt": "workspace:*",
+        "debug": "workspace:*",
+        "build-env": "workspace:*",
+        "typebook": "workspace:*",
+        "typescript": "latest",
+        "tsup": "latest",
+        "vitest": "latest",
+        "@types/node": "latest"
+    },
+    "peerDependencies": {}
+}
