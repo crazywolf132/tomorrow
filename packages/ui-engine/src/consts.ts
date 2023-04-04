@@ -5,14 +5,15 @@ export const CTRL_L = '\u000C';
 export const CTRL_D = '\u0004';
 export const ESC = 'ESC';
 
-export const LOGO = chalk.hex("#F49FB6")`
+export const LOGO = (port: "----" | number) => `${chalk.hex("#F49FB6")`
 
 ████████ ███    ███ ██████  ██     ██         ██ ███████ 
    ██    ████  ████ ██   ██ ██     ██         ██ ██      
    ██    ██ ████ ██ ██████  ██  █  ██         ██ ███████ 
    ██    ██  ██  ██ ██   ██ ██ ███ ██    ██   ██      ██ 
    ██    ██      ██ ██   ██  ███ ███  ██  █████  ███████ 
-                                                         
+`}
+\t\t\tPORT: ${chalk.white.bold(port)}                                              
 `
 
 export const clear = (): void => {

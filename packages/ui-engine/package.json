@@ -1,6 +1,6 @@
 {
     "name": "ui-engine",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "scripts": {
@@ -8,18 +8,20 @@
         "build": "tsup"
     },
     "dependencies": {
-        "chalk": "latest"
+        "chalk": "4.0.0",
+        "ora": "5.4.1",
+        "progress": "^2.0.3"
     },
     "devDependencies": {
         "@tomorrow/config": "workspace:*",
-        "toolbelt": "workspace:*",
-        "debug": "workspace:*",
+        "@tomorrow/events": "workspace:*",
+        "@types/node": "latest",
         "build-env": "workspace:*",
+        "debug": "workspace:*",
+        "toolbelt": "workspace:*",
+        "tsup": "latest",
         "typebook": "workspace:*",
         "typescript": "latest",
-        "tsup": "latest",
-        "vitest": "latest",
-        "@types/node": "latest"
-    },
-    "peerDependencies": {}
+        "vitest": "latest"
+    }
 }

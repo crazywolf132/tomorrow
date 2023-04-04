@@ -4,6 +4,8 @@ import { Registry } from "./registry";
 import Config from '@tomorrow/config';
 import { CTRL_C, CTRL_D, CTRL_L, LOGO, ESC, clear } from "./consts";
 import Log from 'debug';
+import Events from '@tomorrow/events'
+import { Reporter } from "./reporter";
 
 const debug = Log.get('ui-engine');
 
@@ -12,9 +14,13 @@ export default class UIEngine {
     private static keyHandler: ((key: string) => void);
     private static screenStack: Screen[] = []; // This is going to be the list of all the screens
 
-    private static registry: Registry;
+    public static registry: Registry;
     private static keyPressHandler: KeyPressHandler;
     private static listener: any;
+
+    private static reporter: Reporter = new Reporter();
+
+    private static port: "----" | number = "----";
 
     public static registerScreen(screen: Screen) {
         debug('register:', screen.screenName);
@@ -53,6 +59,12 @@ export default class UIEngine {
             throw new Error('No screens have been registered.');
         }
 
+        debug('adding server listener')
+        Events.on('server.Ready', (status: any) => {
+            this.port = (status as number);
+            UIEngine.display();
+        })
+
         debug('creating keypress handler');
         this.keyPressHandler = new KeyPressHandler(this.handleKeyPress);
         debug('creating interaction listener');
@@ -70,7 +82,8 @@ export default class UIEngine {
     }
 
     public static display() {
-        clear();
+        if (Boolean(Config.get('interface.clearConsole')))
+            clear();
         // This is where we will load the logo.
         // We will check to see if the config allows for it first.
         if (Config.get('interface.showLogo') as boolean) {
@@ -80,7 +93,7 @@ export default class UIEngine {
                 console.log(Config.get('interface.logo') as string);
             } else {
                 // We will just render our logo
-                console.log(LOGO)
+                console.log(LOGO(this.port))
             }
         } else {
             debug('logo disabled');
@@ -106,6 +119,10 @@ export default class UIEngine {
 
         // We are now going to use the key handler from the current screen.
         UIEngine.keyHandler(key);
+    }
+
+    public static getReporter(): Reporter {
+        return UIEngine.reporter
     }
 }
 
