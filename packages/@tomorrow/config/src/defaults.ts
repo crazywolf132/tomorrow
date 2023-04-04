@@ -23,6 +23,12 @@ export default {
 
         // Whether or not to use the `src` folder instead.
         useSrc: true,
+
+        // Whether or not to do module federation
+        federation: false,
+
+        // Use hermes
+        useHermes: false
     },
 
     orchestrator: {
@@ -58,5 +64,6 @@ export default {
         clearConsole: true,
         showMacCommands: true,
         allowWebsite: false,
+        onlyInfoLogs: false
     }
 }
