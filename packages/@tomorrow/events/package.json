@@ -1,0 +1,24 @@
+{
+    "name": "@tomorrow/events",
+    "version": "0.0.1",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+        "dev": "tsup --watch",
+        "build": "tsup"
+    },
+    "dependencies": {
+        "@foxycorps/nanoevent": "^4.2.0"
+    },
+    "devDependencies": {
+        "@tomorrow/config": "workspace:*",
+        "@types/node": "latest",
+        "build-env": "workspace:*",
+        "debug": "workspace:*",
+        "toolbelt": "workspace:*",
+        "tsup": "latest",
+        "typebook": "workspace:*",
+        "typescript": "latest",
+        "vitest": "latest"
+    }
+}
