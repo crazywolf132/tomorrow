@@ -1,8 +1,12 @@
 {
     "name": "toolbelt",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
+    "react-native": "./dist/native.js",
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "dev": "tsup --watch",
         "build": "tsup",
@@ -15,8 +19,10 @@
         "@types/jest": "latest",
         "@types/node": "^18.11.9",
         "build-env": "workspace:*",
+        "cross-spawn": "^7.0.3",
         "debug": "workspace:*",
         "jest": "latest",
+        "react-native": "^0.71.3",
         "resolve-from": "^5.0.0",
         "ts-jest": "latest",
         "tsup": "latest",
@@ -28,10 +34,11 @@
         "@react-native-community/cli-server-api": "^9.2.1",
         "deepmerge": "^4.2.2",
         "find-yarn-workspace-root": "^2.0.0",
-        "fs-extra": "^10.1.0",
+        "fs-extra": "^11.1.0",
         "glob": "^8.0.3",
-        "metro": "^0.73.3",
+        "metro": "^0.75.1",
         "metro-config": "^0.73.3",
+        "metro-runtime": "^0.73.6",
         "metro-source-map": "^0.73.3"
     }
 }

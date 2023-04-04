@@ -41,13 +41,28 @@ export const importInspectorProxyFromProject = (projectRoot: string): { Inspecto
     return importFromProject(projectRoot, 'metro-inspector-proxy');
 }
 
-export const importHermesCommandFromProject = (projectRoot: string, configLocation: string | null): string => {
+export const importBaseJSBundleFromProject = (projectRoot: string): typeof import("metro/src/DeltaBundler/Serializers/baseJSBundle") => {
+    return importFromProject(projectRoot, 'metro/src/DeltaBundler/Serializers/baseJSBundle');
+}
+
+export const importBundleToStringFromProject = (projectRoot: string): typeof import("metro/src/lib/bundleToString") => {
+    return importFromProject(projectRoot, 'metro/src/lib/bundleToString');
+}
+
+export const importMetroAsyncRequireFromProject = (projectRoot: string): typeof import('metro-runtime/src/modules/asyncRequire') => {
+    return importFromProject(projectRoot, 'metro-runtime/src/modules/asyncRequire');
+}
+
+export const importHRMClientFromProject = (projectRoot: string): typeof import('react-native/Libraries/Utilities/HMRClient') => {
+    return importFromProject(projectRoot, 'react-native/Libraries/Utilities/HMRClient')
+}
+
+export const importHermesCommandFromProject = (projectRoot: string): string => {
     const platformExecutable = getHermesCommandPlatform();
     const hermesLocations = [
         // We will take priority from the config
-        configLocation != null && configLocation.length >= 1 ? `${configLocation}/bin/hermes` : '',
         // We will also check the env
-        process.env['REACT_NATIVE_OVERRIDE_HERMES_DIR'] ? `${process.env['REACT_NATIVE_OVERRIDE_HERMES_DIR']}/bin/hermes` : '',
+        process.env['REACT_NATIVE_OVERRIDE_HERMES_DIR'] ? `${process.env['REACT_NATIVE_OVERRIDE_HERMES_DIR']}/build/bin/hermesc` : '',
         // Building hermes from source
         'react-native/ReactAndroid/hermes-engine/build/hermes/bin/hermesc',
         // Prebuilt hermesc in the official react-native 0.69+ releases
