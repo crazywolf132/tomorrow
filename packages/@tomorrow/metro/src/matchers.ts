@@ -8,6 +8,9 @@ export const nodeModuleMatcher = createModuleMatcher({ folders: nodeModulesPaths
 // must be transpiled with every possible option. This is the slowest approach
 export const impossibleNodeModuleMatcher = createModuleMatcher({
     moduleIds: [
+        'react-native-reanimated',
+        'nanoid',
+        '@tomorrow/router',
         'victory'
     ],
     folders: nodeModulesPaths

@@ -32,7 +32,11 @@ export const INTERNAL_CALLSITES_REGEX = new RegExp(
         'node_modules/promise/setimmediate/.+\\.js$',
         // Babel helpers that implement language features
         'node_modules/@babel/runtime/.+\\.js$',
+        // Hide Hermes internal bytecode
+        '/InternalBytecode/InternalBytecode\\.js$',
         // Block native code invocations
         `\\[native code\\]`,
+        // Hide react-dom (web)
+        'node_modules/react-dom/.+\\.js$',
     ].join('|')
 );

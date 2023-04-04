@@ -72,7 +72,6 @@ const getBabelRc = (() => {
 
 export const getBabelConfig = (filename: string, options: BabelTransformerOptions, plugins: BabelPlugins[]) => {
     const babelRC = getBabelRc(options.projectRoot, options);
-
     const extraConfig = {
         babelrc: typeof options.enableBabelRCLookup === 'boolean',
         code: false,

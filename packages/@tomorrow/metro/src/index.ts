@@ -6,8 +6,9 @@ import type { LoadOptions } from 'typebook'
 import { importMetroConfigFromProject, getExtensions, getWatchFolders, getModulesPaths, isURL } from 'toolbelt';
 import config from '@tomorrow/config';
 
-export const getDefaultConfig = (projectRoot: string): MetroConfig.InputConfigT => {
+// import federation from '@tomorrow/federation';
 
+export const getDefaultConfig = (projectRoot: string): MetroConfig.InputConfigT => {
     const MetroConfig = importMetroConfigFromProject(projectRoot);
     const reactNativePath = path.dirname(resolveFrom(projectRoot, 'react-native/package.json'));
 
@@ -24,13 +25,15 @@ export const getDefaultConfig = (projectRoot: string): MetroConfig.InputConfigT 
         reporter,
         ...metroDefaultValues
     } = (MetroConfig as any).getDefaultConfig.getDefaultValues(projectRoot);
-
     return (MetroConfig as any).mergeConfig(metroDefaultValues, {
         watchFolders,
         resolver: {
             resolverMainFields,
             platforms: ['ios', 'android', 'native', 'testing'],
-            assetExts: metroDefaultValues.resolver.assetExts.filter(assetExt => !sourceExts.includes(assetExt)),
+            assetExts: metroDefaultValues.resolver.assetExts.concat(
+                // Add default support for image file types
+                ['heic', 'avif']
+            ).filter(assetExt => !sourceExts.includes(assetExt)),
             sourceExts,
             nodeModulesPaths
         },
@@ -39,9 +42,11 @@ export const getDefaultConfig = (projectRoot: string): MetroConfig.InputConfigT 
                 require.resolve(path.join(reactNativePath, 'Libraries/Core/InitializeCore'))
             ],
             getPolyfills: () => require(path.join(reactNativePath, 'rn-get-polyfills'))(),
+            // ...federation
         },
         server: {
             port: Number(config.get('metro.port')) || Number(process.env.METRO_PORT) || 8081,
+            experimentalImportBundleSupport: true
         },
         symbolicator: {
             customizeFrame: (frame: any) => {
@@ -68,6 +73,18 @@ export const getDefaultConfig = (projectRoot: string): MetroConfig.InputConfigT 
             allowOptionalDependencies: true,
             babelTransformerPath: path.join(require.resolve('@tomorrow/metro'), '../../dist/metro-babel-transformer.js'),
             assetRegistryPath: 'react-native/Libraries/Image/AssetRegistry',
+            getTransformOptions: async () => ({
+                transform: {
+                    experimentalImportSupport: true,
+                    inlineRequires: true
+                }
+            }),
+            // asyncRequireModulePath: require.resolve("@tomorrow/federation/async-require")
+        },
+        watcher: {
+            healthCheck: {
+                enabled: true
+            }
         }
     })
 }
